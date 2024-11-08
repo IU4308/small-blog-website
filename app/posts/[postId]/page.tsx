@@ -13,9 +13,8 @@ export function generateStaticParams() {
     }))
 }
 
-export async function generateMetadata( props: {params: ParamsType} ) {
-    const params = await props.params
-    //const postId = params.postId
+export async function generateMetadata( arg: {params: ParamsType} ) {
+    const params = await arg.params
 
     const posts = getSortedPostsData() //deduped
     const { postId } = params
@@ -32,10 +31,10 @@ export async function generateMetadata( props: {params: ParamsType} ) {
         title: post.title,
     }
 
-    }
+}
 
-export default async function Post( props: {params: ParamsType} ) {
-    const params = await props.params
+export default async function Post( arg: {params: ParamsType} ) {
+    const params = await arg.params
     const posts = getSortedPostsData() //deduped
     const { postId } = params
 
