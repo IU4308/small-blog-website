@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FaYoutube, FaTwitter, FaGithub, FaLaptop } from "react-icons/fa"
+import { FaGithub } from "react-icons/fa"
 
 export default function Navbar() {
     return (

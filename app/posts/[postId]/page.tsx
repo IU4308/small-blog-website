@@ -3,6 +3,8 @@ import { getPostData, getSortedPostsData } from "@/lib/posts"
 import {notFound} from 'next/navigation'
 import Link from "next/link"
 
+type ParamsType = Promise<{ postId: string }>
+
 export function generateStaticParams() {
     const posts = getSortedPostsData()
 
@@ -11,7 +13,9 @@ export function generateStaticParams() {
     }))
 }
 
-export function generateMetadata({ params }: {params: { postId: string} } ) {
+export async function generateMetadata( props: {params: ParamsType} ) {
+    const params = await props.params
+    //const postId = params.postId
 
     const posts = getSortedPostsData() //deduped
     const { postId } = params
@@ -30,8 +34,8 @@ export function generateMetadata({ params }: {params: { postId: string} } ) {
 
     }
 
-export default async function Post({ params }: {params: { postId: string} } ) {
-
+export default async function Post( props: {params: ParamsType} ) {
+    const params = await props.params
     const posts = getSortedPostsData() //deduped
     const { postId } = params
 
