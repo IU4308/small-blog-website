@@ -1,0 +1,1 @@
+GET http://localhost:3000/api/revalidate?path=/&secret=1cf2b2e15c813c3aa0af815f3974216a
